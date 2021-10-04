@@ -1,0 +1,125 @@
+.nav-container {
+  height: 10vh;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 50px;
+}
+.nav {
+  /* height: 10vh;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0; */
+  height: 100%;
+  width: 98%;
+  margin: 10px auto;
+  padding: 0 10px;
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 8px black;
+  font-family: sans-serif;
+}
+
+.left-nav {
+  width: 30%;
+}
+.left-nav img {
+  height: 100%;
+}
+
+.search-container {
+  width: 40%;
+  text-align: left;
+  position: relative;
+}
+
+.search-container input[type='text'] {
+  padding: 10px;
+  border: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: black;
+  outline: none;
+  font-size: 1rem;
+  color: white;
+  width: 80%;
+}
+.search-container button {
+  padding: 10px 15px;
+  background: #ddd;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  /* box-shadow: 0 10px 10px grey; */
+}
+
+.search-results {
+  position: absolute;
+  top: 95%;
+  width: 80%;
+  padding: 10px 0;
+  background-color: rgb(31, 31, 31);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 0 8px black;
+}
+
+.search-results li {
+  list-style: none;
+  width: 100%;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+.search-results li img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.right-nav {
+  width: 30%;
+  display: flex;
+  /* justify-content: right; */
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 40%;
+  font-weight: bold;
+}
+.nav-user img {
+  width: 40px;
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 60%;
+}
+
+.nav-links li {
+  list-style: none;
+  margin: 0 5px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  color: white;
+}

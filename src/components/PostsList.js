@@ -12,7 +12,7 @@ export default class PostsList extends Component {
                         {/* Post wrapper divided into sections */}
                         {/* header contains user avatar, name, the time when post was created */}
                         <div className="post-header">
-                            <img className="post-header-avatar" src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="" />
+                            <img className="post-header-avatar" src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="avatar" />
                             <div>
                                 <p>{post.user.name}</p>
                                 <p className="text-mute">a minute ago</p>
@@ -26,7 +26,7 @@ export default class PostsList extends Component {
                         <div className="post-actions">
                             <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="" />
                             <span>54</span>
-                            <img src="https://img-premium.flaticon.com/png/512/2040/premium/2040474.png?token=exp=1633190950~hmac=d278f9b2c47ad05af005f80c54f4fde0" alt="" />
+                            <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" alt="" />
                             <span>3</span>
                         </div>
                         {/* Input box to comment on the post */}

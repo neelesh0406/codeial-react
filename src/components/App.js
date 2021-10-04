@@ -1,9 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 import { fetchPosts } from '../actions/posts'
 import './App.css';
-import { PostsList, Navbar } from './';
+import { Home, Navbar } from './';
+import Page404 from "./Page404"; //Not found page
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -15,13 +22,20 @@ class App extends React.Component {
 
     console.log("props: ", this.props);
     return (
-      <>
+      <Router>
         <Navbar />
         <div className="App">
-          <PostsList posts={posts} />
+          {/* <PostsList posts={posts} /> */}
+          <Switch>
+            <Route exact path='/'>
+              <Home posts={posts} />
+            </Route>
+            <Route>
+              <Page404 />
+            </Route>
+          </Switch>
         </div>
-      </>
-    );
+      </Router>);
   }
 }
 
