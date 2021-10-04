@@ -1,0 +1,103 @@
+/* List of all posts */
+.posts-list {
+  width: 50%;
+}
+
+/* Single post wrapper */
+.post-wrapper {
+  margin: 10px 0;
+  background-color: #fbad9d74;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.post-header {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.post-header-avatar {
+  width: 50px;
+  margin: 4px 10px;
+}
+
+.post-content {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.post-actions {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+.post-actions img {
+  width: 20px;
+}
+
+.post-actions span {
+  margin-right: 20px;
+  margin-left: 5px;
+}
+
+.post-comment-box {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.post-comment-box input {
+  outline: none;
+  width: 60%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+}
+
+.post-comment-box button {
+  font-size: 1rem;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7abb2;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.post-comment-box button:hover {
+  background-color: black;
+  color: white;
+}
+
+.post-comments-display {
+  border: 1px solid black;
+  margin-top: 16px;
+  border-radius: 20px;
+  margin: 16px auto;
+  background-color: black;
+  width: 80%;
+}
+.post-comment {
+  text-align: left;
+  margin: 0px 0;
+  padding: 10px 0px;
+  padding-left: 8px;
+  color: white;
+}
+.post-comment span {
+  font-size: 0.8rem;
+  margin: 7px 0;
+  margin-right: 8px;
+}
+
+/* General classes */
+
+.text-mute {
+  color: rgb(165, 165, 165);
+}
