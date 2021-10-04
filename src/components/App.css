@@ -1,88 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .App {
   display: flex;
   justify-content: center;
-  /* background-color: grey; */
-  height: 100vh;
-}
-
-/* List of all posts */
-.posts-list {
-  width: 50%;
-  /* background-color: beige; */
-}
-
-/* Single post wrapper */
-.post-wrapper {
-  margin: 10px 0;
-  /* background-color: white; */
-  background-color: #fbad9d74;
-  padding: 15px;
-  border-radius: 20px;
-  /* font-size: 1.5rem; */
-}
-
-.post-header {
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-}
-
-.post-header-avatar {
-  width: 50px;
-  margin: 4px 10px;
-}
-
-.post-content {
-  border: 1px solid black;
-  text-align: center;
-}
-
-.post-actions {
-  border: 1px solid black;
-}
-
-.post-comment {
-  width: 100%;
-  margin-top: 20px;
-}
-
-.post-comment input {
-  outline: none;
-  width: 60%;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 1rem;
-  background-color: black;
-  color: white;
-}
-
-.post-comment button {
-  font-size: 1rem;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  background-color: #f7abb2;
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.post-comment button:hover {
-  background-color: black;
-  color: white;
-}
-
-.post-comments-display {
-  border: 1px solid black;
-}
-
-/* General classes */
-
-.text-mute {
-  color: rgb(165, 165, 165);
+  margin-bottom: 5%;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './PostsList.css'
+import PropTypes from 'prop-types';
 
 export default class PostsList extends Component {
     render() {
@@ -30,7 +31,7 @@ export default class PostsList extends Component {
                         </div>
                         {/* Input box to comment on the post */}
                         <div className="post-comment-box">
-                            <input type="text" name="" id="" />
+                            <input type="text" name="" id="" placeholder="Comment..." />
                             <button>Comment</button>
                         </div>
                         {/* Area where comments will be displayed */}
@@ -57,4 +58,8 @@ export default class PostsList extends Component {
             </div>
         )
     }
+}
+
+PostsList.propTypes = {
+    posts: PropTypes.array.isRequired
 }
