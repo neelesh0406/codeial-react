@@ -1,6 +1,5 @@
 .login-form {
   width: 60%;
-  height: 40vh;
   margin: 0 auto;
   font-family: sans-serif;
   text-align: center;
@@ -24,7 +23,8 @@
   letter-spacing: 2px;
 }
 .field input {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
   padding: 5px 10px;
   width: 50%;
   outline: none;
