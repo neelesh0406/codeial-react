@@ -8,7 +8,7 @@ import {
 
 import { fetchPosts } from '../actions/posts'
 import './App.css';
-import { Home, Navbar } from './';
+import { Home, Navbar, Login } from './';
 import Page404 from "./Page404"; //Not found page
 
 
@@ -29,6 +29,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/'>
               <Home posts={posts} />
+            </Route>
+            <Route exact path='/login'>
+              <Login />
             </Route>
             <Route>
               <Page404 />
