@@ -1,6 +1,7 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, SIGNUP_SUCCESS, SIGNUP_START, SIGNUP_FAILED, AUTHENTICATE_USER, LOG_OUT } from './actionTypes';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, SIGNUP_SUCCESS, SIGNUP_START, SIGNUP_FAILED, AUTHENTICATE_USER, LOG_OUT, CLEAR_AUTH_STATE } from './actionTypes';
 import { APIUrls } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
+
 
 export function startLogin() {
     return {
@@ -99,10 +100,17 @@ export function signup(email, password, confirmPassword, name) {
             .then(data => {
                 console.log("Sign up response: ", data);
                 if (data.success) {
-                    dispatch(signupSuccessful());
+                    localStorage.setItem('token', data.data.token);     //store the bearer token in local storage
+                    dispatch(signupSuccessful(data.data.user));
                     return;
                 }
                 dispatch(signupFailed(data.message));
             })
+    }
+}
+
+export function clearAuthState() {
+    return {
+        type: CLEAR_AUTH_STATE
     }
 }

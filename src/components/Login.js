@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+import { Redirect } from 'react-router';
+import { clearAuthState, login } from '../actions/auth';
 
 import './LoginSignup.css';
 
@@ -12,6 +13,12 @@ class Login extends Component {
             password: ''
         }
     }
+
+    componentWillUnmount() {
+        this.props.dispatch(clearAuthState());
+        //When the component is unmounted, this action will clear the 'error' in state
+    }
+
     handleLoginForm = (e) => {
         e.preventDefault();
         console.log(this.state);
@@ -34,7 +41,11 @@ class Login extends Component {
     }
 
     render() {
-        const { error, inProgress } = this.props.auth;
+        const { error, inProgress, isLoggedin } = this.props.auth;
+
+        if (isLoggedin) {
+            return <Redirect to="/" />
+        }
         return (
             <form className="login-form">
                 <h1 className='login-signup-header'>Login to Codeial</h1>

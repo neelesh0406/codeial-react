@@ -49,6 +49,9 @@ class App extends React.Component {
             <Route exact path='/signup'>
               <Signup />
             </Route>
+            <Route exact path='/logout'>
+              <Login />
+            </Route>
             <Route>
               <Page404 />
             </Route>
