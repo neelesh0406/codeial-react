@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import './LoginSignup.css';
+import { signup } from '../actions/auth';
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,11 +20,7 @@ export default class Signup extends Component {
         const { email, password, confirmPassword, name } = this.state;
 
         if (name && email && password && confirmPassword) {
-            if (password !== confirmPassword) {
-                alert("Passwords do not match");
-                return;
-            }
-            //dispacth action
+            this.props.dispatch(signup(email, password, confirmPassword, name));
         }
     }
 
@@ -49,9 +47,11 @@ export default class Signup extends Component {
     }
 
     render() {
+        const { error, inProgress } = this.props.auth;
         return (
             <form className="login-form">
                 <h1 className='login-signup-header'>Signup to Codeial</h1>
+                {error && <div>{error}</div>}
                 <div className="field">
                     <label htmlFor="signup-name">Name</label>
                     <input type="text" name="name" id="signup-name" onChange={this.handleNameChange} />
@@ -69,9 +69,21 @@ export default class Signup extends Component {
                     <input type="password" name="confirm-password" id="confirm-password" onChange={this.handleConfirmPasswordChange} />
                 </div>
                 <div className="field">
-                    <button onClick={this.handleSignupForm}>Sign Up</button>
+                    {inProgress ?
+                        <button onClick={this.handleSignupForm}>Signing Up...</button>
+                        :
+                        <button onClick={this.handleSignupForm}>Sign Up</button>
+                    }
                 </div>
             </form>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(Signup)

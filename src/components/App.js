@@ -10,7 +10,7 @@ import { fetchPosts } from '../actions/posts'
 import './App.css';
 import { Home, Navbar, Login, Signup } from './';
 import Page404 from "./Page404"; //Not found page
-import * as jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { authenticateUser } from "../actions/auth";
 
 

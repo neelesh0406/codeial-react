@@ -84,7 +84,7 @@ export function signupSuccessful(user) {
     }
 }
 
-export function signup(email, password, name) {
+export function signup(email, password, confirmPassword, name) {
     return (dispatch) => {
         dispatch(startSignup());
         const url = APIUrls.signup;
@@ -93,11 +93,16 @@ export function signup(email, password, name) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: getFormBody({ email, password, name })
+            body: getFormBody({ email, password, confirm_password: confirmPassword, name })
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log("Sign up response: ", data);
+                if (data.success) {
+                    dispatch(signupSuccessful());
+                    return;
+                }
+                dispatch(signupFailed(data.message));
             })
     }
 }
