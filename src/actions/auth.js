@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, SIGNUP_SUCCESS, SIGNUP_START, SIGNUP_FAILED } from './actionTypes';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, SIGNUP_SUCCESS, SIGNUP_START, SIGNUP_FAILED, AUTHENTICATE_USER, LOG_OUT } from './actionTypes';
 import { APIUrls } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
 
@@ -45,6 +45,20 @@ export function login(email, password) {
                 }
                 dispatch(loginFailed(data.message));
             })
+    }
+}
+
+//Persisting user
+export function authenticateUser(user) {
+    return {
+        type: AUTHENTICATE_USER,
+        user
+    }
+}
+//Logging out
+export function logoutUser() {
+    return {
+        type: LOG_OUT
     }
 }
 

@@ -11,16 +11,23 @@ import './App.css';
 import { Home, Navbar, Login, Signup } from './';
 import Page404 from "./Page404"; //Not found page
 import * as jwtDecode from 'jwt-decode';
+import { authenticateUser } from "../actions/auth";
 
 
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
 
-    const token = localStorage.getItem('token');  //If the token is there we will store the user's info in state
+    const token = localStorage.getItem('token');  //If the token is there we will store the user's info in redux store
 
     if (token) {
       const user = jwtDecode(token);   //jwt-decode package to get the info from token
+
+      this.props.dispatch(authenticateUser({
+        email: user.email,
+        _id: user._id,
+        name: user.name
+      }))
     }
   }
 

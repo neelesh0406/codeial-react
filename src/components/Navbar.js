@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../actions/auth';
 
 import './Navbar.css';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
+
+    logOut = () => {
+        localStorage.removeItem('token');
+        this.props.dispatch(logoutUser());
+    }
+
     render() {
+        const { auth } = this.props;
+
         return (
             <div className="nav-container">
                 <nav className="nav">
@@ -29,14 +39,17 @@ export default class Navbar extends Component {
                         </div> */}
                     </div>
                     <div className="right-nav">
-                        <div className="nav-user">
+                        {auth.isLoggedin && <div className="nav-user">
                             <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="user-avatar" id="user-avatar" />
-                            <span>Johny Doe</span>
-                        </div>
+                            <span>{auth.user.name}</span>
+                        </div>}
                         <ul className="nav-links">
-                            <li><Link to='/login'>Log in</Link></li>
-                            <li><Link to='/logout'>Log out</Link></li>
-                            <li><Link to='/signup'>Register</Link></li>
+                            {!auth.isLoggedin &&
+                                <li><Link to='/login'>Log in</Link></li>}
+                            {auth.isLoggedin &&
+                                <li><Link to='/logout' onClick={this.logOut}>Log out</Link></li>}
+                            {!auth.isLoggedin &&
+                                <li><Link to='/signup'>Register</Link></li>}
                         </ul>
                     </div>
                 </nav>
@@ -44,3 +57,11 @@ export default class Navbar extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);
