@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import { fetchPosts } from '../actions/posts'
@@ -13,6 +14,20 @@ import Page404 from "./Page404"; //Not found page
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from "../actions/auth";
 
+const Settings = () => {
+  return < div > <h1>Settings page</h1></div >
+};
+
+const PrivateRoute = (privateRouteProps) => {
+  const { isLoggedin, path, component: Component } = privateRouteProps;
+
+  return <Route path={path} render={(props) => {
+    return isLoggedin ?
+      <Component {...props} />
+      :
+      <Redirect to='/login' />
+  }} />
+}
 
 class App extends React.Component {
   componentDidMount() {
@@ -32,7 +47,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
 
     console.log("props: ", this.props);
     return (
@@ -52,6 +67,7 @@ class App extends React.Component {
             <Route exact path='/logout'>
               <Login />
             </Route>
+            <PrivateRoute exact path='/settings' component={Settings} isLoggedin={auth.isLoggedin} />
             <Route>
               <Page404 />
             </Route>
@@ -63,7 +79,8 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    auth: state.auth
   };
 }
 

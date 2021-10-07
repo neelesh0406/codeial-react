@@ -39,9 +39,9 @@ class Navbar extends Component {
                         </div> */}
                     </div>
                     <div className="right-nav">
-                        {auth.isLoggedin && <div className="nav-user">
+                        {auth.isLoggedin && <div className="nav-user" >
                             <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="user-avatar" id="user-avatar" />
-                            <span>{auth.user.name}</span>
+                            <span><Link to='/settings'>{auth.user.name}</Link></span>
                         </div>}
                         <ul className="nav-links">
                             {!auth.isLoggedin &&
