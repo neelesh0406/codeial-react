@@ -1,0 +1,88 @@
+.settings {
+  /* background-color: rgb(191, 191, 191); */
+  margin: 20px auto;
+  width: 60%;
+  font-family: sans-serif;
+  text-align: center;
+}
+.settings h1 {
+  color: #fe606d;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.settings-container {
+  background-color: #bfbfbf1f;
+  border: 1px solid #fe606d;
+  border-radius: 12px;
+  padding: 20px 0;
+}
+
+.field {
+  margin: 30px 0;
+}
+.settings .field label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  color: #000000ab;
+}
+
+.settings .field input {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 5px 10px;
+  width: 50%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: transparent;
+}
+
+.settings .field p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.settings .user-img {
+  width: 100%;
+}
+.settings .user-img img {
+  height: 200px;
+}
+.settings .user-img p {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #fe606d;
+  cursor: pointer;
+}
+
+.settings-btn {
+  font-size: 1rem;
+  padding: 10px 30px;
+  letter-spacing: 2px;
+  font-family: sans-serif;
+  cursor: pointer;
+  background-color: #fe606d;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+.settings-btn:hover {
+  box-shadow: 0 0 5px #fe606d;
+}
+
+#go-back {
+  padding: 10px 0;
+  color: #fe606d;
+  cursor: pointer;
+}
+#go-back:hover {
+  text-decoration: underline;
+}

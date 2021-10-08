@@ -1,5 +1,6 @@
 .nav-container {
-  height: 10vh;
+  height: 50px;
+  /* height: 10vh; */
   width: 100%;
   position: relative;
   top: 0;
@@ -7,11 +8,6 @@
   margin-bottom: 50px;
 }
 .nav {
-  /* height: 10vh;
-  width: 100%;
-  position: relative;
-  top: 0;
-  left: 0; */
   height: 100%;
   width: 98%;
   margin: 10px auto;
@@ -95,16 +91,14 @@
   align-items: center;
   justify-content: right;
   width: 40%;
-}
-.nav-user img {
-  width: 40px;
-  margin-right: 8px;
-}
-.nav-user a {
-  text-decoration: none;
   font-weight: bold;
   color: black;
   letter-spacing: 1px;
+}
+.nav-user img {
+  height: 40px;
+  width: auto;
+  margin-right: 8px;
 }
 
 .nav-links {

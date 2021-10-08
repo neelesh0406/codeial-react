@@ -9,14 +9,11 @@ import {
 
 import { fetchPosts } from '../actions/posts'
 import './App.css';
-import { Home, Navbar, Login, Signup } from './';
+import { Home, Navbar, Login, Signup, Settings } from './';
 import Page404 from "./Page404"; //Not found page
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from "../actions/auth";
 
-const Settings = () => {
-  return < div > <h1>Settings page</h1></div >
-};
 
 const PrivateRoute = (privateRouteProps) => {
   const { isLoggedin, path, component: Component } = privateRouteProps;
