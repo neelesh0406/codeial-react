@@ -9,3 +9,16 @@
   justify-content: center;
   margin-bottom: 5%;
 }
+
+.alert {
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+.error-dialog {
+  background-color: #ff003357;
+}
+.success-dialog {
+  background-color: #8fffaca8;
+}

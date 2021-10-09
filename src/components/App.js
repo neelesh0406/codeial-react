@@ -13,6 +13,7 @@ import { Home, Navbar, Login, Signup, Settings } from './';
 import Page404 from "./Page404"; //Not found page
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from "../actions/auth";
+import { getAuthTokenFromLocalStorage } from "../helpers/utils";
 
 
 const PrivateRoute = (privateRouteProps) => {
@@ -43,7 +44,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
 
-    const token = localStorage.getItem('token');  //If the token is there we will store the user's info in redux store
+    const token = getAuthTokenFromLocalStorage();  //If the token is there we will store the user's info in redux store
 
     if (token) {
       const user = jwtDecode(token);   //jwt-decode package to get the info from token
@@ -70,9 +71,6 @@ class App extends React.Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup'>
               <Signup />
-            </Route>
-            <Route exact path='/logout'>
-              <Login />
             </Route>
             <PrivateRoute exact path='/settings' component={Settings} isLoggedin={auth.isLoggedin} />
             <Route>

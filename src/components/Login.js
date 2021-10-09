@@ -43,7 +43,8 @@ class Login extends Component {
     render() {
         const { error, inProgress, isLoggedin } = this.props.auth;
 
-        const { from } = this.props.location.state || { from: { pathname: '/' } };  //To solve redirecting problem for /settings
+        const { from } = this.props.location.state || { from: { pathname: '/' } };
+        //To solve redirecting problem for /settings
 
         if (isLoggedin) {
             return <Redirect to={from} />
@@ -51,7 +52,7 @@ class Login extends Component {
         return (
             <form className="login-form">
                 <h1 className='login-signup-header'>Login to Codeial</h1>
-                {error && <div>Invalid username/password</div>}
+                {error && <div className="alert error-dialog">Invalid username/password</div>}
                 <div className="field">
                     <label htmlFor="login-email">Email</label>
                     <input type="email" name="email" id="login-email" onChange={this.handleEmailChange} value={this.state.email} />

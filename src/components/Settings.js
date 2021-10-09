@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { clearAuthState, editUser } from '../actions/auth';
 import './Settings.css';
 
 class Settings extends Component {
@@ -20,9 +21,24 @@ class Settings extends Component {
         })
     }
 
+    handleSave = () => {
+        const { name, password, confirmPassword } = this.state;
+        const { user } = this.props.auth;
+
+        if (name && password && confirmPassword && password === confirmPassword) {
+            this.props.dispatch(editUser(name, password, confirmPassword, user._id))
+            this.handleChange('editMode', false);
+            return;
+        }
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch(clearAuthState());
+    }
+
     render() {
         const { editMode } = this.state;
-        const { user } = this.props.auth;
+        const { user, error } = this.props.auth;
         console.log("****Settings: ", this.props);
         return (
             <div className="settings">
@@ -32,6 +48,9 @@ class Settings extends Component {
                         <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="user-avatar" />
                         <p>Update Image</p>
                     </div>
+
+                    {error && <div className="alert error-dialog">{error}</div>}
+                    {error === false && <div className="alert success-dialog">User updated successfuly</div>}
                     <div className="field">
                         <label htmlFor="">Email</label>
                         <p>{user.email}</p>
@@ -54,7 +73,7 @@ class Settings extends Component {
                     </div>}
                     <div>
                         {editMode ?
-                            <><button className="settings-btn">Save</button>
+                            <><button className="settings-btn" onClick={this.handleSave}>Save</button>
                                 <p id="go-back" onClick={() => this.handleChange('editMode', false)}>Go back</p></>
                             :
                             <button onClick={() => this.handleChange('editMode', true)} className="settings-btn">Edit Profile</button>

@@ -49,7 +49,7 @@ class Navbar extends Component {
                             {!auth.isLoggedin &&
                                 <li><Link to='/login'>Log in</Link></li>}
                             {auth.isLoggedin &&
-                                <li><Link to='/logout' onClick={this.logOut}>Log out</Link></li>}
+                                <li onClick={this.logOut}>Log out</li>}
                             {!auth.isLoggedin &&
                                 <li><Link to='/signup'>Register</Link></li>}
                         </ul>
