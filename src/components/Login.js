@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { clearAuthState, login } from '../actions/auth';
 
 import './LoginSignup.css';
@@ -43,8 +43,10 @@ class Login extends Component {
     render() {
         const { error, inProgress, isLoggedin } = this.props.auth;
 
+        const { from } = this.props.location.state || { from: { pathname: '/' } };  //To solve redirecting problem for /settings
+
         if (isLoggedin) {
-            return <Redirect to="/" />
+            return <Redirect to={from} />
         }
         return (
             <form className="login-form">

@@ -18,12 +18,25 @@ import { authenticateUser } from "../actions/auth";
 const PrivateRoute = (privateRouteProps) => {
   const { isLoggedin, path, component: Component } = privateRouteProps;
 
-  return <Route path={path} render={(props) => {
-    return isLoggedin ?
-      <Component {...props} />
-      :
-      <Redirect to='/login' />
-  }} />
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return isLoggedin ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
+      }}
+    />
+  );
 }
 
 class App extends React.Component {
@@ -46,7 +59,6 @@ class App extends React.Component {
   render() {
     const { posts, auth } = this.props;
 
-    console.log("props: ", this.props);
     return (
       <Router>
         <Navbar />
@@ -55,9 +67,7 @@ class App extends React.Component {
             <Route exact path='/'>
               <Home posts={posts} />
             </Route>
-            <Route exact path='/login'>
-              <Login />
-            </Route>
+            <Route exact path='/login' component={Login} />
             <Route exact path='/signup'>
               <Signup />
             </Route>

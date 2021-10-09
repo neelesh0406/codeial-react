@@ -23,6 +23,7 @@ class Settings extends Component {
     render() {
         const { editMode } = this.state;
         const { user } = this.props.auth;
+        console.log("****Settings: ", this.props);
         return (
             <div className="settings">
                 <h1>User settings</h1>
