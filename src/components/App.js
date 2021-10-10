@@ -9,7 +9,7 @@ import {
 
 import { fetchPosts } from '../actions/posts'
 import './App.css';
-import { Home, Navbar, Login, Signup, Settings } from './';
+import { Home, Navbar, Login, Signup, Settings, UserProfile } from './';
 import Page404 from "./Page404"; //Not found page
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from "../actions/auth";
@@ -73,6 +73,7 @@ class App extends React.Component {
               <Signup />
             </Route>
             <PrivateRoute exact path='/settings' component={Settings} isLoggedin={auth.isLoggedin} />
+            <PrivateRoute exact path='/user/:userId' component={UserProfile} isLoggedin={auth.isLoggedin} />
             <Route>
               <Page404 />
             </Route>

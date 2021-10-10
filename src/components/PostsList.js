@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './PostsList.css'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class PostsList extends Component {
     render() {
@@ -12,7 +13,10 @@ export default class PostsList extends Component {
                         {/* Post wrapper divided into sections */}
                         {/* header contains user avatar, name, the time when post was created */}
                         <div className="post-header">
-                            <img className="post-header-avatar" src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="avatar" />
+                            <Link to={`/user/${post.user._id}`} >
+                                <img className="post-header-avatar" src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="avatar" />
+                                {/* when clicked redirect to API_ROOT/users/{post.user._id} */}
+                            </Link>
                             <div>
                                 <p>{post.user.name}</p>
                                 <p className="text-mute">a minute ago</p>
@@ -54,8 +58,9 @@ export default class PostsList extends Component {
                             </div>
                         </div>
                     </div>
-                })}
-            </div>
+                })
+                }
+            </div >
         )
     }
 }
