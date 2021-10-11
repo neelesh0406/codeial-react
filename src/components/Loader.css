@@ -1,17 +1,13 @@
 :root {
-  --backColor: #222;
-  --foreColor: #fff;
+  --backColor: #fff;
+  --foreColor: #222;
 }
 
 .loader-body {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   width: 100%;
   height: 100vh;
-  /* background: transparent; */
-  background: rgba(34, 34, 34, 0.386);
+  background: transparent;
   justify-content: center;
   align-items: center;
 }
