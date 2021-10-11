@@ -45,11 +45,12 @@ class UserProfile extends Component {
                         </div>
 
                         <div>
-                            {false ?
-                                <button className="friend-btn" onClick={this.handleSave}>Unfriend</button>
+                            {/* {false ?
+                                <button className="friend-btn" onClick={this.handleFriend} value={user._id}>Unfriend</button>
                                 :
-                                <button className="friend-btn">Add friend</button>
-                            }
+                                <button className="friend-btn" onClick={this.handleFriendship}>Add friend</button>
+                            } */}
+                            <button className="friend-btn" onClick={this.handleFriendship} value={user._id}>Add friend</button>
                         </div>
                     </div>
                 </div >

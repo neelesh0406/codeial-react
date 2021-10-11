@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { PostsList } from './';
+import { PostsList, FriendsList } from './';
 
 export default class Home extends Component {
     render() {
-        const { posts } = this.props;
+        const { posts, isLoggedin } = this.props;
         return (
-            <PostsList posts={posts} />
+            <>
+                <PostsList posts={posts} />
+                {isLoggedin && <FriendsList />}
+            </>
         )
     }
 }

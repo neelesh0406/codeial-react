@@ -6,7 +6,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Settings from "./Settings";
 import UserProfile from "./UserProfile";
+import FriendsList from "./FriendsList";
 
-export { PostsList, App, Navbar, Home, Login, Signup, Settings, UserProfile };
+export { PostsList, App, Navbar, Home, Login, Signup, Settings, UserProfile, FriendsList };
 
 //Single file to export all Components anywhere

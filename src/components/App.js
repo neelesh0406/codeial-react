@@ -66,7 +66,7 @@ class App extends React.Component {
         <div className="App">
           <Switch>
             <Route exact path='/'>
-              <Home posts={posts} />
+              <Home posts={posts} isLoggedin={auth.isLoggedin} />
             </Route>
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup'>

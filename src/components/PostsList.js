@@ -8,6 +8,7 @@ export default class PostsList extends Component {
         const { posts } = this.props;
         return (
             <div className="posts-list" >
+                <h1>Posts</h1>
                 {posts.map((post) => {
                     return <div className="post-wrapper" key={post._id}>
                         {/* Post wrapper divided into sections */}
