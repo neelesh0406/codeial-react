@@ -4,8 +4,19 @@ import './UserProfile.css';
 import { fetchUserProfile } from '../actions/profile';
 import { connect } from 'react-redux';
 import Loader from './Loader';
+import { APIUrls } from '../helpers/urls';
+import { addFriend } from '../actions/friends';
+import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 
 class UserProfile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: null,
+            error: null
+        }
+        //if the add friend action is success or failure
+    }
     componentDidMount() {
         const { match } = this.props;
         if (match.params.userId) {
@@ -13,7 +24,48 @@ class UserProfile extends Component {
             //dispatch an action
             this.props.dispatch(fetchUserProfile(match.params.userId));
         }
-        console.log("***lalalal", this.props.profile.user);
+    }
+
+    handleAddFriendClick = async () => {
+        const userId = this.props.match.params.userId;
+        const url = APIUrls.addFriendship(userId);
+
+        const options = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
+            }
+        }
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        if (data.success) {
+            this.setState({
+                success: true
+            })
+
+            this.props.dispatch(addFriend(data.data.friendship))
+        } else {
+            this.setState({
+                success: null,
+                error: data.message
+            })
+        }
+    }
+
+    //Returns true or false depending if this user is a friend
+    checkIfUserIsAFriend = () => {
+        const { match, friends } = this.props;
+        const userId = match.params.userId;
+
+        const index = friends.map((friend) => friend.to_user._id).indexOf(userId);
+
+        if (index !== -1) {
+            return true;
+        }
+
+        return false;
     }
 
     render() {
@@ -26,6 +78,8 @@ class UserProfile extends Component {
             return <h1 className="alert error-dialog">{error}</h1>
             //displays error if success:false is returned from the server API
         }
+
+        const ifUserIsAFriend = this.checkIfUserIsAFriend();
 
         return (
             <>
@@ -50,7 +104,11 @@ class UserProfile extends Component {
                                 :
                                 <button className="friend-btn" onClick={this.handleFriendship}>Add friend</button>
                             } */}
-                            <button className="friend-btn" onClick={this.handleFriendship} value={user._id}>Add friend</button>
+                            {!ifUserIsAFriend ?
+                                <button className="friend-btn" onClick={this.handleAddFriendClick}>Add friend</button>
+                                :
+                                <button className="friend-btn" onClick={this.handleRemoveFriendClick}>Remove friend</button>
+                            }
                         </div>
                     </div>
                 </div >
@@ -61,7 +119,8 @@ class UserProfile extends Component {
 
 function mapStateToProps(state) {
     return {
-        profile: state.profile
+        profile: state.profile,
+        friends: state.friends
     }
 }
 

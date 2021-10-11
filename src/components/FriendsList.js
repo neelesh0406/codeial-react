@@ -17,9 +17,9 @@ class FriendsList extends Component {
                 {this.props.friends.length > 0 &&
                     <div className="friends-list">
                         {this.props.friends.map((friend) => {
-                            return <Link to={`/user/${friend._id}`} className="friend-wrapper" key={friend._id}>
+                            return <Link to={`/user/${friend.to_user._id}`} className="friend-wrapper" key={friend.to_user._id}>
                                 <img src="https://cdn-icons-png.flaticon.com/512/1674/1674291.png" alt="avatar" />
-                                <span>{friend.name}</span>
+                                <span>{friend.to_user.name}</span>
                             </Link>
                         })
                         }
