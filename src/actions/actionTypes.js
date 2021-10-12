@@ -28,3 +28,6 @@ export const FETCH_FRIENDS_SUCCESS = "FETCH_FRIENDS_SUCCESS";
 
 export const ADD_FRIEND = "ADD_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
+
+//Create posts
+export const ADD_POST = "ADD_POST";

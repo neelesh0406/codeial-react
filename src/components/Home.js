@@ -6,7 +6,7 @@ export default class Home extends Component {
         const { posts, isLoggedin } = this.props;
         return (
             <>
-                <PostsList posts={posts} />
+                <PostsList posts={posts} isLoggedin={isLoggedin} />
                 {isLoggedin && <FriendsList />}
             </>
         )

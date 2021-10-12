@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import './PostsList.css'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { CreatePost } from '.';
 
 export default class PostsList extends Component {
     render() {
-        const { posts } = this.props;
+        const { posts, isLoggedin } = this.props;
         return (
             <div className="posts-list" >
                 <h1>Posts</h1>
+                {/* Component for creating post */}
+                {isLoggedin && <CreatePost />}
                 {posts.map((post) => {
                     return <div className="post-wrapper" key={post._id}>
                         {/* Post wrapper divided into sections */}

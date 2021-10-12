@@ -1,5 +1,5 @@
 import { APIUrls } from "../helpers/urls";
-import { UPDATE_POSTS } from "./actionTypes";
+import { ADD_POST, UPDATE_POSTS } from "./actionTypes";
 
 //Action creators
 export function fetchPosts() {
@@ -19,5 +19,12 @@ function updatePosts(posts) {
     return {
         type: UPDATE_POSTS,
         posts
+    }
+}
+
+export function addPost(post) {
+    return {
+        type: ADD_POST,
+        post
     }
 }
