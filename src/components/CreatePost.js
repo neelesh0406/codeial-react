@@ -18,7 +18,6 @@ class CreatePost extends Component {
         })
     }
     handleAddPost = async () => {
-        //FETCH ASYN
         const { text } = this.state;
         const url = APIUrls.createPost;
         const options = {

@@ -14,7 +14,6 @@ export function fetchFriends() {
         })
             .then(response => response.json())
             .then((data) => {
-                console.log("***data from fetch friends: ", data);
                 if (data.success) {
                     dispatch(fetchFriendsSuccess(data.data.friends));
                     return;

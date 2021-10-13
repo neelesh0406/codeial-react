@@ -9,7 +9,6 @@ class FriendsList extends Component {
         this.props.dispatch(fetchFriends());
     }
     render() {
-        console.log("Frinds ki list, sab props, state", this.props);
         return (
             <div className="friends-list-container">
                 <h1>Friends</h1>

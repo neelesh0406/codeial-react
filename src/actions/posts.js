@@ -1,5 +1,5 @@
 import { APIUrls } from "../helpers/urls";
-import { ADD_POST, UPDATE_POSTS } from "./actionTypes";
+import { ADD_COMMENT, ADD_POST, UPDATE_POSTS } from "./actionTypes";
 
 //Action creators
 export function fetchPosts() {
@@ -8,7 +8,6 @@ export function fetchPosts() {
         fetch(url)
             .then(response => response.json())
             .then((data) => {
-                console.log("data from fetchPosts: ", data);
                 dispatch(updatePosts(data.data.posts))
             }
             )
@@ -26,5 +25,14 @@ export function addPost(post) {
     return {
         type: ADD_POST,
         post
+    }
+}
+
+//Creating comment
+export function createComment(comment, postId) {
+    return {
+        type: ADD_COMMENT,
+        comment,
+        postId
     }
 }

@@ -1,0 +1,23 @@
+.post-comment {
+  text-align: left;
+  margin: 0px 0;
+  padding: 10px 0px;
+  padding-left: 8px;
+  color: white;
+  font-family: sans-serif;
+}
+.post-comment-header {
+  margin-bottom: 5px;
+}
+.post-comment span {
+  font-size: 0.8rem;
+  margin: 7px 0;
+  margin-right: 8px;
+  color: rgb(214, 214, 214);
+}
+
+.post-comment a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
