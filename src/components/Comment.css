@@ -8,12 +8,22 @@
 }
 .post-comment-header {
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+.post-comment-header img {
+  filter: invert(1);
+  height: 0.9rem;
+  cursor: pointer;
+  margin-right: 3px;
 }
 .post-comment span {
   font-size: 0.8rem;
   margin: 7px 0;
   margin-right: 8px;
   color: rgb(214, 214, 214);
+  display: flex;
+  align-items: center;
 }
 
 .post-comment a {

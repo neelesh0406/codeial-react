@@ -29,6 +29,7 @@
 }
 .post-actions img {
   width: 20px;
+  cursor: pointer;
 }
 
 .post-actions span {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { createComment } from '../actions/posts';
+import { addLike, createComment } from '../actions/posts';
 import { APIUrls } from '../helpers/urls';
 import { getAuthTokenFromLocalStorage, getFormBody } from '../helpers/utils';
 import { Comment } from './';
@@ -45,8 +46,16 @@ class Post extends Component {
         })
     }
 
+    handlePostLikeClick = () => {
+        const { post, user } = this.props;
+        this.props.dispatch(addLike(post._id, 'Post', user._id));
+    }
+
     render() {
-        const { post } = this.props;
+        const { post, user } = this.props;
+
+        const isPostLikedByUser = post.likes.includes(user._id); //true or false. Only valid when the user likes. After refresh this doesn't work
+
         return (
             <div className="post-wrapper">
                 {/* Post wrapper divided into sections */}
@@ -67,8 +76,12 @@ class Post extends Component {
                 </div>
                 {/* Actions: Like and comment */}
                 <div className="post-actions">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="" />
-                    <span>54</span>
+                    {isPostLikedByUser ?
+                        <img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" alt="liked post" onClick={this.handlePostLikeClick} />
+                        :
+                        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="not liked post" onClick={this.handlePostLikeClick} />
+                    }
+                    <span>{post.likes.length}</span>
                     <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" alt="" />
                     <span>3</span>
                 </div>
@@ -89,4 +102,13 @@ class Post extends Component {
     }
 }
 
-export default connect()(Post);
+Post.propTypes = {
+    post: PropTypes.object.isRequired,
+}
+
+function mapStateToProps({ auth }) {
+    return {
+        user: auth.user
+    }
+}
+export default connect(mapStateToProps)(Post);
