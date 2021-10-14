@@ -31,20 +31,20 @@ export default function posts(state = [], action) {
                 return post;
             })
             return postLikes;
-        // case UPDATE_COMMENT_LIKE:
-        //     const commentLikes = state.map((post) => {
-        //         post.comments.map((comment) => {
-        //             if (comment._id === action.commentId) {
-        //                 return {
-        //                     ...comment,
-        //                     likes: [...comment.likes, action.userId]
-        //                 }
-        //             }
-        //             return comment;
-        //         })
-        //         return post;
-        //     })
-        //     return commentLikes;
+        case UPDATE_COMMENT_LIKE:
+            const commentLikes = state.map((post) => {
+                post.comments.map((comment) => {
+                    if (comment._id === action.commentId) {
+                        return {
+                            ...comment,
+                            likes: [...comment.likes, action.userId]
+                        }
+                    }
+                    return comment;
+                })
+                return post;
+            })
+            return commentLikes;
         default:
             return state;
     }

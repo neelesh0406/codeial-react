@@ -65,15 +65,21 @@
   border-bottom-right-radius: 4px;
   box-shadow: 0 0 8px black;
 }
-
 .search-results li {
   list-style: none;
+}
+.search-results li a {
   width: 100%;
   padding: 6px 12px;
   display: flex;
   align-items: center;
   color: white;
+  text-decoration: none;
+  font-family: sans-serif;
   cursor: pointer;
+}
+.search-results li a:hover {
+  background-color: rgb(67, 67, 67);
 }
 .search-results li img {
   height: 40px;

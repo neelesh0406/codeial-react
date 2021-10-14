@@ -19,7 +19,7 @@ class Comment extends Component {
                 <div className="post-comment">
                     <div className="post-comment-header">
                         <span ><Link to={`/user/${comment.user._id}`}>{comment.user.name}</Link></span>
-                        <span className="text-mute">a miute ago</span>
+                        <span className="text-mute">a minute ago</span>
                         <span >
                             {isCommentLikedByUser ?
                                 <img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" alt="" onClick={this.handleCommentLikeClick} />

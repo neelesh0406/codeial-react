@@ -6,10 +6,32 @@ import { logoutUser } from '../actions/auth';
 import './Navbar.css';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            content: '',
+            showResults: null
+        }
+    }
 
     logOut = () => {
         localStorage.removeItem('token');
         this.props.dispatch(logoutUser());
+    }
+
+    handleChangeSearch = (e) => {
+        this.setState({
+            content: e.target.value
+        })
+        if (e.target.value.length > 2) {
+            this.setState({
+                showResults: true
+            })
+        } else {
+            this.setState({
+                showResults: false
+            })
+        }
     }
 
     render() {
@@ -22,21 +44,25 @@ class Navbar extends Component {
                         <Link to='/'><img src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png" alt="logo" /></Link>
                     </div>
                     <div className="search-container">
-                        <input type="text" placeholder="Search.." name="search" onChange={this.handleChangeSearch} />
+                        <input type="text" placeholder="Search.." name="search" onChange={this.handleChangeSearch} on alue={this.state.content} />
                         <button type="button"><i className="fa fa-search"></i></button>
 
-                        {/* <div className="search-results">
+                        {this.state.showResults && <div className="search-results">
                             <ul>
                                 <li>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
-                                    <span>Lala lajpat</span>
+                                    <Link to='/'>
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
+                                        <span>Lala lajpat</span>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
-                                    <span>Lala lajpat</span>
+                                    <Link to='/'>
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
+                                        <span>Lala lajpat</span>
+                                    </Link>
                                 </li>
                             </ul>
-                        </div> */}
+                        </div>}
                     </div>
                     <div className="right-nav">
                         {auth.isLoggedin && <div className="nav-user" >
