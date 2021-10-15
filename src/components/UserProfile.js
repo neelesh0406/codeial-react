@@ -26,6 +26,18 @@ class UserProfile extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        const { match: { params: prevParams } } = prevProps;
+
+        const { match: { params: currentParams } } = this.props
+
+        //if previous params (userId is passes in /user/xyz) and current params exist and the user ids passed are not equal
+        if (prevParams && currentParams && prevParams.userId !== currentParams.userId) {
+            //dispatch an action
+            this.props.dispatch(fetchUserProfile(currentParams.userId));
+        }
+    }
+
     handleAddFriendClick = async () => {
         const userId = this.props.match.params.userId;
         const url = APIUrls.addFriendship(userId);
