@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
+import { fetchUser, userSearchStart } from '../actions/search';
 
 import './Navbar.css';
 
@@ -10,7 +11,6 @@ class Navbar extends Component {
         super(props);
         this.state = {
             content: '',
-            showResults: null
         }
     }
 
@@ -23,19 +23,26 @@ class Navbar extends Component {
         this.setState({
             content: e.target.value
         })
-        if (e.target.value.length > 2) {
-            this.setState({
-                showResults: true
-            })
-        } else {
-            this.setState({
-                showResults: false
-            })
-        }
+        const { content: searchText } = this.state;
+        this.props.dispatch(fetchUser(searchText));
+    }
+
+    handleSearchClick = () => {
+        const { content: searchText } = this.state;
+        this.props.dispatch(fetchUser(searchText));
+    }
+
+    handleListClick = () => {
+        //empties the search box
+        this.setState({
+            content: '',
+        })
+        //collapses the list when a user is clicked
+        this.props.dispatch(userSearchStart());
     }
 
     render() {
-        const { auth } = this.props;
+        const { auth, search } = this.props;
 
         return (
             <div className="nav-container">
@@ -44,23 +51,20 @@ class Navbar extends Component {
                         <Link to='/'><img src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png" alt="logo" /></Link>
                     </div>
                     <div className="search-container">
-                        <input type="text" placeholder="Search.." name="search" onChange={this.handleChangeSearch} on alue={this.state.content} />
-                        <button type="button"><i className="fa fa-search"></i></button>
+                        <input type="text" placeholder="Search.." name="search" onChange={this.handleChangeSearch} value={this.state.content} />
+                        <button type="button" onClick={this.handleSearchClick}><i className="fa fa-search"></i></button>
 
-                        {this.state.showResults && <div className="search-results">
+                        {/* Search results will be displayed only if there are any */}
+                        {search.length > 0 && <div className="search-results">
                             <ul>
-                                <li>
-                                    <Link to='/'>
-                                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
-                                        <span>Lala lajpat</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to='/'>
-                                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
-                                        <span>Lala lajpat</span>
-                                    </Link>
-                                </li>
+                                {search.map((user) => {
+                                    return <li key={user._id}>
+                                        <Link to={`/user/${user._id}`} onClick={this.handleListClick}>
+                                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" />
+                                            <span>{user.name}</span>
+                                        </Link>
+                                    </li>
+                                })}
                             </ul>
                         </div>}
                     </div>
@@ -88,7 +92,8 @@ class Navbar extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.auth
+        auth: state.auth,
+        search: state.search.searchResult
     }
 }
 
