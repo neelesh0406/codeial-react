@@ -138,7 +138,8 @@ class UserProfile extends Component {
                             < p > {user.email} </p>
                         </div>
 
-                        <div>
+                        {/* If the logged in user has opened his own profile (/user/xyz...), don't show the friend button */}
+                        {user._id !== this.props.auth.user._id && <div>
                             {!ifUserIsAFriend ?
                                 <button className="friend-btn" onClick={this.handleAddFriendClick}>Add friend</button>
                                 :
@@ -146,7 +147,7 @@ class UserProfile extends Component {
                             }
                             {this.state.error && <div className="alert error-dialog">{this.state.error}</div>}
                             {this.state.success && <div className="alert success-dialog">{this.state.success}</div>}
-                        </div>
+                        </div>}
                     </div>
                 </div >
             </>
@@ -157,7 +158,8 @@ class UserProfile extends Component {
 function mapStateToProps(state) {
     return {
         profile: state.profile,
-        friends: state.friends
+        friends: state.friends,
+        auth: state.auth
     }
 }
 

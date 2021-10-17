@@ -20,6 +20,7 @@
 .post-content {
   text-align: left;
   padding: 5px 10px;
+  border-bottom: 0.5px solid #acacac;
 }
 
 .post-actions {

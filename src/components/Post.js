@@ -83,7 +83,7 @@ class Post extends Component {
                     }
                     <span>{post.likes.length}</span>
                     <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" alt="" />
-                    <span>3</span>
+                    <span>{post.comments.length}</span>
                 </div>
                 {/* Input box to comment on the post */}
                 <div className="post-comment-box">

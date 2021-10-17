@@ -43,13 +43,25 @@ class CreatePost extends Component {
     }
 
     render() {
+        const { currentUser } = this.props;
         return (
             <div className="create-post">
-                <textarea onChange={this.handlePostText} value={this.state.text} id="create-post-text" cols="30" rows="3" placeholder="Enter text...."></textarea>
+                <div id="create-post-user-text">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="avatar" />
+                        <p>{currentUser.name}</p>
+                    </div>
+                    <textarea onChange={this.handlePostText} value={this.state.text} id="create-post-text" cols="30" rows="3" placeholder="Enter text...."></textarea>
+                </div>
                 <button onClick={this.handleAddPost} id="create-post-btn">Add post</button>
             </div>
         )
     }
 }
 
-export default connect()(CreatePost);
+function mapStateToProps(state) {
+    return {
+        currentUser: state.auth.user
+    }
+}
+export default connect(mapStateToProps)(CreatePost);
