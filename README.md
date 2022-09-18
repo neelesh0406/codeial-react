@@ -1,7 +1,6 @@
 # GIF for login
 
-Example dummy registed id: baba@baba.com
-Example password: baba
+Example dummy registed id: baba@baba.com, example password: baba
 You can also sign up with custom credentials
 ![codeial-login-signup](https://github.com/neelesh0406/codeial-react/blob/master/codeial-gif.gif)
 
