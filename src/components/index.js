@@ -10,7 +10,8 @@ import Signup from "./Signup";
 import Settings from "./Settings";
 import UserProfile from "./UserProfile";
 import FriendsList from "./FriendsList";
+import Chat from "./Chat";
 
-export { PostsList, App, Navbar, Home, Login, Signup, Settings, UserProfile, FriendsList, CreatePost, Post, Comment };
+export { PostsList, App, Navbar, Home, Login, Signup, Settings, UserProfile, FriendsList, CreatePost, Post, Comment, Chat };
 
 //Single file to export all Components anywhere

@@ -15,6 +15,7 @@ export function fetchPosts() {
     }
 }
 
+
 function updatePosts(posts) {
     return {
         type: UPDATE_POSTS,
@@ -47,7 +48,7 @@ export function addLike(id, likeType, userId) {
             method: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
+                'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`,
             }
         })
             .then(response => response.json())

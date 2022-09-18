@@ -1,3 +1,8 @@
+# GIF for login
+
+Example dummy registed id: baba@baba.com
+Example password: baba
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
