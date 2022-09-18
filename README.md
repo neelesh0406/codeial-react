@@ -2,6 +2,17 @@
 
 Example dummy registed id: baba@baba.com
 Example password: baba
+You can also sign up with custom credentials
+![codeial-login-signup](https://github.com/neelesh0406/codeial-react/blob/master/codeial-gif.gif)
+
+# GIF for creating posts (can create only if logged in)
+
+create post, comment on post, like post
+![codeial-create-post](https://github.com/neelesh0406/codeial-react/blob/master/codeial-post-gif.gif)
+
+# GIF for search, add, remove friends
+
+![codeial-friendship](https://github.com/neelesh0406/codeial-react/blob/master/codeial-friend-gif.gif)
 
 # Getting Started with Create React App
 
